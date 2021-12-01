@@ -1,0 +1,8 @@
+<div class="list-group">
+    <div class="d-flex justify-content-center">
+        <h5 class="mb-1">{{ titleName }}</h5>
+    </div>
+    <div class="d-flex">
+        <app-items *ngFor="let item of items" [item]="item"></app-items>
+    </div>
+</div>

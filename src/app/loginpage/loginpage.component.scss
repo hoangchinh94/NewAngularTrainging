@@ -1,0 +1,14 @@
+.container {
+    width: 500px;
+    height: 700px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+input.ng-invalid.ng-touched {
+    border: solid 1px red;
+}
+
+.invalid {
+    color: red;
+}

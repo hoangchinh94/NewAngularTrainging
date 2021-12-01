@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <div class="mt-5">
+      <div class="d-flex justify-content-center">
+        <h2>Đăng nhập</h2>
+      </div>
+      <form [formGroup]="loginForm" >
+        <div class="form-group">
+          <label for="email">Email của bạn</label>
+          <input type="text" class="form-control" id="email" formControlName="email" placeholder="Nhập email của bạn">
+          <p id="emailHelp"class="invalid" *ngIf="email.invalid && email.touched">Hãy nhập email</p>
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="Nhập vào mật khẩu">
+          <p id="" class="invalid" *ngIf="password.errors?.['required'] && password.touched">Hãy nhập vào mật khẩu</p>
+          <p class="invalid" *ngIf="password.errors?.['minlength']">Mật khẩu phải ít nhất 6 kí tự</p>
+        </div>
+        <div class="d-flex w-100 justify-content-center">
+            <button type="submit"class="btn btn-primary w-100">Xác nhận</button>
+        </div>
+        <div class="d-flex mt-2 justify-content-center">
+            <p><a routerLink="/admin">Đăng nhập với tư cách admin</a></p>
+        </div>
+    </form>   
+    </div>
+</div>
