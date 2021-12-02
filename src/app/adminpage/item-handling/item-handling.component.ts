@@ -10,7 +10,6 @@ import { Item } from 'src/model/items.model';
 })
 export class ItemHandlingComponent implements OnInit {
   @Input('titleName') titleName: string = '';
-  adminItemSv = new ItemService;
   availableType = [
     { type: 'Áo', value: 'shirt' },
     { type: 'Quần', value: 'trouser' },
@@ -18,13 +17,13 @@ export class ItemHandlingComponent implements OnInit {
     { type: 'Giày', value: 'shoe' },
     { type: 'Đồng hồ', value: 'watch' }
   ]
-  
   shirtListItem: Item[];
   trouserListItem: Item[];
   shoeListItem: Item[];
   capListItem: Item[];
   watchListItem: Item[];
-  constructor() { 
+
+  constructor(private adminItemSv: ItemService) { 
     this.shirtListItem = this.adminItemSv.getListItem('shirt');
     this.trouserListItem = this.adminItemSv.getListItem('trouser');
     this.shoeListItem = this.adminItemSv.getListItem('shoe');

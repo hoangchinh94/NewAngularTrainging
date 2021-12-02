@@ -8,15 +8,16 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./cap.component.scss']
 })
 export class CapComponent implements OnInit {
-
-  capSv = new ItemService;
   items: Item[];
 
-  constructor() { 
-    this.items = this.capSv.getListItem('cap')
+  constructor(private capSv: ItemService) { 
+    this.items = this.capSv.getListItem('cap');
   }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){
+    this.items = this.capSv.getListItem('cap');
+  }
 }

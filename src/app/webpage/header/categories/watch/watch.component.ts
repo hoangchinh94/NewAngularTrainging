@@ -8,14 +8,16 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./watch.component.scss']
 })
 export class WatchComponent implements OnInit {
-
-  watchSv = new ItemService;
   items: Item[];
 
-  constructor() { 
+  constructor(private watchSv: ItemService) { 
     this.items = this.watchSv.getListItem('watch')
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
+    this.items = this.watchSv.getListItem('watch');
   }
 }

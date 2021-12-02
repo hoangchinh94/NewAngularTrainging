@@ -8,14 +8,16 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./shirt.component.scss']
 })
 export class ShirtComponent implements OnInit {
-  shirtSv = new ItemService;
   items: Item[];
 
-  constructor() { 
+  constructor(private shirtSv: ItemService) { 
     this.items = this.shirtSv.getListItem('shirt')
   }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){
+    this.items = this.shirtSv.getListItem('shirt');
+  }
 }

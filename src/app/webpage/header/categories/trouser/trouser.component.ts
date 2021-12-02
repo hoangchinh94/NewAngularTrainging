@@ -8,15 +8,16 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./trouser.component.scss']
 })
 export class TrouserComponent implements OnInit {
-trouserSv = new ItemService
-  items: Item[];
-  
+  items: Item[]; 
 
-  constructor() { 
+  constructor(private trouserSv: ItemService) { 
     this.items = this.trouserSv.getListItem('trouser')
   }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){
+    this.items = this.trouserSv.getListItem('trouser');
+  }
 }
