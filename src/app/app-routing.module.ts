@@ -20,7 +20,8 @@ const  appRoutes = [
   { path: 'watch', component: WatchComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: 'login', component: LoginpageComponent},
-  { path: 'admin', component: AdminpageComponent}
+  { path: 'admin', component: AdminpageComponent},
+  { path: '**', redirectTo: '/'}
 ]
 
 @NgModule({

@@ -17,7 +17,7 @@ export class CapComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
-    this.items = this.capSv.getListItem('cap');
-  }
+  // ngAfterViewInit(){
+  //   this.items = this.capSv.getListItem('cap');
+  // }
 }

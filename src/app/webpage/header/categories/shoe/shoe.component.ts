@@ -17,7 +17,7 @@ export class ShoeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
-    this.items = this.shoeSv.getListItem('shoe');
-  }
+  // ngAfterViewInit(){
+  //   this.items = this.shoeSv.getListItem('shoe');
+  // }
 }

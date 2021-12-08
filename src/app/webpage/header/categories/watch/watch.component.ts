@@ -17,7 +17,7 @@ export class WatchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
-    this.items = this.watchSv.getListItem('watch');
-  }
+  // ngAfterViewInit(){
+  //   this.items = this.watchSv.getListItem('watch');
+  // }
 }

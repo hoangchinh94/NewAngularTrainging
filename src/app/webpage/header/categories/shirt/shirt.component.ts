@@ -17,7 +17,7 @@ export class ShirtComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
-    this.items = this.shirtSv.getListItem('shirt');
-  }
+  // ngAfterViewInit(){
+  //   this.items = this.shirtSv.getListItem('shirt');
+  // }
 }

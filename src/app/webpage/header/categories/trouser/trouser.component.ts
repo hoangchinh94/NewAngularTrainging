@@ -17,7 +17,7 @@ export class TrouserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
-    this.items = this.trouserSv.getListItem('trouser');
-  }
+  // ngAfterViewInit(){
+  //   this.items = this.trouserSv.getListItem('trouser');
+  // }
 }
