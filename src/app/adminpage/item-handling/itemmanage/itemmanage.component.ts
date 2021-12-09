@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
 @Component({
@@ -8,12 +9,12 @@ import { Item } from 'src/model/items.model';
 })
 export class ItemmanageComponent implements OnInit {
 @Input() items: Item[];
-  constructor() { }
+  constructor( private itemSv: ItemService) { }
 
   ngOnInit(): void {
   }
 
-  deleteItem() {
-    
+  onDelete(itemDelete) {
+    this.itemSv.deleteItem(itemDelete)
   }
 }

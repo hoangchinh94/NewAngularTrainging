@@ -8,7 +8,7 @@
                 <img class="mt-2 mb-2" [src]= "item.srcUrl" alt="{{ item.name}}">
             </div>
             <div class="d-flex justify-content-center">
-                <Button class="btn btn-success">Xóa sản phẩm</Button>
+                <Button class="btn btn-success" (click)="onDelete(item)">Xóa sản phẩm</Button>
             </div>
         </div>
         

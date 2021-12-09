@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -8,16 +9,19 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./cap.component.scss']
 })
 export class CapComponent implements OnInit {
+  subscription: Subscription;
   items: Item[];
 
   constructor(private capSv: ItemService) { 
-    this.items = this.capSv.getListItem('cap');
   }
 
   ngOnInit(): void {
+    this.subscription = this.capSv.getListItem('cap').subscribe((data) => {
+    this.items = data;
+    });
   }
 
-  // ngAfterViewInit(){
-  //   this.items = this.capSv.getListItem('cap');
-  // }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

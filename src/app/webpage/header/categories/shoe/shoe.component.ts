@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -8,16 +9,19 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./shoe.component.scss']
 })
 export class ShoeComponent implements OnInit {
+  subscription: Subscription
   items: Item[];
-  
+
   constructor(private shoeSv: ItemService) { 
-    this.items = this.shoeSv.getListItem('shoe')
   }
 
   ngOnInit(): void {
+    this.subscription = this.shoeSv.getListItem('shoe').subscribe((data) => {
+    this.items = data;
+    });
   }
 
-  // ngAfterViewInit(){
-  //   this.items = this.shoeSv.getListItem('shoe');
-  // }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

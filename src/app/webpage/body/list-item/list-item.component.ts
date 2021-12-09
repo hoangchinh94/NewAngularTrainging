@@ -12,11 +12,19 @@ export class ListItemComponent implements OnInit {
   @Input() type: string;
   @Input("titleName") titleName: string;
   items: Item[];
+  subscription: Subscription;
 
   constructor(private itemSv: ItemService) {
+
   }
 
   ngOnInit() {
-    this.items = this.itemSv.getListItem(this.type);
+    this.subscription = this.itemSv.getListItem(this.type).subscribe((data) => {
+    this.items = data;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

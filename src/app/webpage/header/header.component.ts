@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -9,19 +10,14 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() onChosenType = new EventEmitter<string>()
-  itemService =  new ItemService;
+  // @Output() onChosenType = new EventEmitter<string>()
+
   // chosenList: Item[];
+  subscription: Subscription;
 
-  constructor() { 
-    
+  constructor(private itemService: ItemService) {
   }
-
 
   ngOnInit(): void {
-  }
-  
-  chooseType(type: string) {
-    this.onChosenType.emit(type)
   }
 }

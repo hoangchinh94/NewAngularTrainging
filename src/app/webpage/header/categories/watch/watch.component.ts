@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -8,16 +9,19 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./watch.component.scss']
 })
 export class WatchComponent implements OnInit {
+  subscription: Subscription;
   items: Item[];
 
-  constructor(private watchSv: ItemService) { 
-    this.items = this.watchSv.getListItem('watch')
+  constructor(private capSv: ItemService) { 
   }
 
   ngOnInit(): void {
+    this.subscription = this.capSv.getListItem('watch').subscribe((data) => {
+    this.items = data;
+    });
   }
 
-  // ngAfterViewInit(){
-  //   this.items = this.watchSv.getListItem('watch');
-  // }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

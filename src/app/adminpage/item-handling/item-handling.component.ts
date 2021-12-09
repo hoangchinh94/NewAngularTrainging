@@ -24,22 +24,22 @@ export class ItemHandlingComponent implements OnInit {
   watchListItem: Item[];
 
   constructor(private adminItemSv: ItemService) { 
-    this.shirtListItem = this.adminItemSv.getListItem('shirt');
-    this.trouserListItem = this.adminItemSv.getListItem('trouser');
-    this.shoeListItem = this.adminItemSv.getListItem('shoe');
-    this.capListItem = this.adminItemSv.getListItem('cap');
-    this.watchListItem = this.adminItemSv.getListItem('watch');
+    // this.shirtListItem = this.adminItemSv.getListItem('shirt');
+    // this.trouserListItem = this.adminItemSv.getListItem('trouser');
+    // this.shoeListItem = this.adminItemSv.getListItem('shoe');
+    // this.capListItem = this.adminItemSv.getListItem('cap');
+    // this.watchListItem = this.adminItemSv.getListItem('watch');
   }
 
   ngOnInit(): void {
   }
   
   onSubmit(submittedForm: any) {
-    this.adminItemSv.addItem(submittedForm.value.name, submittedForm.value.type, submittedForm.value.srcUrl);
-    this.shirtListItem = this.adminItemSv.getListItem('shirt');
-    this.trouserListItem = this.adminItemSv.getListItem('trouser');
-    this.shoeListItem = this.adminItemSv.getListItem('shoe');
-    this.capListItem = this.adminItemSv.getListItem('cap');
-    this.watchListItem = this.adminItemSv.getListItem('watch');
+    // this.adminItemSv.addItem(submittedForm.value.name, submittedForm.value.type, submittedForm.value.srcUrl);
+    // this.shirtListItem = this.adminItemSv.getListItem('shirt');
+    // this.trouserListItem = this.adminItemSv.getListItem('trouser');
+    // this.shoeListItem = this.adminItemSv.getListItem('shoe');
+    // this.capListItem = this.adminItemSv.getListItem('cap');
+    // this.watchListItem = this.adminItemSv.getListItem('watch');
   }
 }
