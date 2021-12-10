@@ -22,6 +22,8 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { ItemHandlingComponent } from './adminpage/item-handling/item-handling.component';
 import { ItemmanageComponent } from './adminpage/item-handling/itemmanage/itemmanage.component';
+import { ShoppingBagComponent } from './webpage/shopping-bag/shoppping-bag.component';
+
 
 
 
@@ -45,6 +47,7 @@ import { ItemmanageComponent } from './adminpage/item-handling/itemmanage/itemma
     AdminpageComponent,
     ItemHandlingComponent,
     ItemmanageComponent,
+    ShoppingBagComponent
   ],
   imports: [
     BrowserModule,

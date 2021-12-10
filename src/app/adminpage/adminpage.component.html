@@ -1,16 +1,38 @@
 <div class="container">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" routerLink="/">Trang chủ</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link">Quản lý User</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Quản lý sản phẩm</a>
-        </li>
-      </ul>
-      <app-item-handling ></app-item-handling>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/">Trang chủ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Quản lý User</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Quản lý sản phẩm</a>
+    </li>
+  </ul>
+  <div class="mt-5">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Tên sản phẩm" ngModel>
+        <input type="text" class="form-control mb-3" id="srcUrl" name="srcUrl" placeholder="Link sản phẩm" ngModel>
+        <input type="text" class="form-control mb-3" id="price" name="price" placeholder="Giá sản phẩm" ngModel>
+        <div class="d-flex justify-content-center">
+            <select class="custom-select" id="type" name="type" ngModel>
+                <option selected>chọn loại sản phẩm</option>
+                <option *ngFor="let option of availableType" [value]="option.value">{{ option.type }}</option>
+            </select>
+            <button class="btn btn-primary ml-2" type="submit">Button</button>
+        </div>
+    </form>
 </div>
-
-  
+  <div class="container">
+    <div class="row">
+        <div class="col">
+          <div class="list-group" >
+            <div class="list-group-item list-group-item-action mt-5 border">
+              <app-item-handling *ngFor="let category of categories" [type]="category.type" [titleName]="category.titleName"></app-item-handling>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

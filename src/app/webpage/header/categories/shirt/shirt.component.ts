@@ -11,17 +11,22 @@ import { Item } from 'src/model/items.model';
 export class ShirtComponent implements OnInit {
   subscription: Subscription
   items: Item[];
+  amount: number;
 
-  constructor(private shirtSv: ItemService) { 
+  constructor(private shirtSv: ItemService) {
   }
 
   ngOnInit(): void {
     this.subscription = this.shirtSv.getListItem('shirt').subscribe((data) => {
-    this.items = data;
+      this.items = data;
     });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onPutIn(itemName: string, amountInput: number) {
+    this.shirtSv.getChosenItems(itemName, amountInput)
   }
 }

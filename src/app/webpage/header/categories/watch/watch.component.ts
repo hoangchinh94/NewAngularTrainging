@@ -12,16 +12,20 @@ export class WatchComponent implements OnInit {
   subscription: Subscription;
   items: Item[];
 
-  constructor(private capSv: ItemService) { 
+  constructor(private watchSv: ItemService) { 
   }
 
   ngOnInit(): void {
-    this.subscription = this.capSv.getListItem('watch').subscribe((data) => {
-    this.items = data;
+    this.subscription = this.watchSv.getListItem('watch').subscribe((data) => {
+      this.items = data;
     });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onPutIn(itemName: string) {
+    // this.watchSv.getChosenItems(itemName)
   }
 }

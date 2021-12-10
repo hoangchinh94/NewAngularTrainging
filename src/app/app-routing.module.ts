@@ -10,6 +10,7 @@ import { WatchComponent } from './webpage/header/categories/watch/watch.componen
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { ShoppingBagComponent } from './webpage/shopping-bag/shoppping-bag.component';
 
 const  appRoutes = [
   { path: '', component: BodyComponent},
@@ -21,6 +22,7 @@ const  appRoutes = [
   { path: 'register', component: RegisterPageComponent},
   { path: 'login', component: LoginpageComponent},
   { path: 'admin', component: AdminpageComponent},
+  { path: 'shopping-bag', component: ShoppingBagComponent},
   { path: '**', redirectTo: '/'}
 ]
 

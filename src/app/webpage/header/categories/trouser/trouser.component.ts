@@ -11,17 +11,22 @@ import { Item } from 'src/model/items.model';
 export class TrouserComponent implements OnInit {
   subscription: Subscription;
   items: Item[];
+  amount: number;
 
-  constructor(private capSv: ItemService) { 
+  constructor(private trouserSV: ItemService) { 
   }
 
   ngOnInit(): void {
-    this.subscription = this.capSv.getListItem('trouser').subscribe((data) => {
-    this.items = data;
+    this.subscription = this.trouserSV.getListItem('trouser').subscribe((data) => {
+      this.items = data;
     });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onPutIn(itemName: string, amountInput: number) {
+    this.trouserSV.getChosenItems(itemName, amountInput)
   }
 }

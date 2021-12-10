@@ -11,17 +11,22 @@ import { Item } from 'src/model/items.model';
 export class CapComponent implements OnInit {
   subscription: Subscription;
   items: Item[];
+  amount: number;
 
-  constructor(private capSv: ItemService) { 
+  constructor(private capSv: ItemService) {
   }
 
   ngOnInit(): void {
     this.subscription = this.capSv.getListItem('cap').subscribe((data) => {
-    this.items = data;
+      this.items = data;
     });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onPutIn(itemName: string, amountInput: number) {
+    this.capSv.getChosenItems(itemName, amountInput)
   }
 }

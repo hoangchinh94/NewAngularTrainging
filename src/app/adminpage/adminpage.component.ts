@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/model/items.model';
+import { TypeItem } from 'src/model/types.model';
+import { ItemService } from '../service/item.service';
 
 @Component({
   selector: 'app-adminpage',
@@ -7,11 +9,22 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./adminpage.component.scss']
 })
 export class AdminpageComponent implements OnInit {
-  adminItemSv: Item[];
-  itemTotal: Item[];
-  constructor() { }
+  categories: TypeItem[];
+  availableType = [
+    { type: 'Áo', value: 'shirt' },
+    { type: 'Quần', value: 'trouser' },
+    { type: 'Mũ', value: 'cap' },
+    { type: 'Giày', value: 'shoe' },
+    { type: 'Đồng hồ', value: 'watch' }
+  ]
 
-  ngOnInit(): void {
+  constructor(private adminSv: ItemService) {
   }
 
+  ngOnInit(): void {
+    this.categories = this.adminSv.getTitleName()
+  }
+  onSubmit(submittedForm: any) {
+    this.adminSv.addItem(submittedForm.value.name, submittedForm.value.type,submittedForm.value.price, submittedForm.value.srcUrl);
+  }
 }

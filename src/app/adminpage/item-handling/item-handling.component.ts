@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -9,37 +10,26 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./item-handling.component.scss']
 })
 export class ItemHandlingComponent implements OnInit {
-  @Input('titleName') titleName: string = '';
-  availableType = [
-    { type: 'Áo', value: 'shirt' },
-    { type: 'Quần', value: 'trouser' },
-    { type: 'Mũ', value: 'cap' },
-    { type: 'Giày', value: 'shoe' },
-    { type: 'Đồng hồ', value: 'watch' }
-  ]
-  shirtListItem: Item[];
-  trouserListItem: Item[];
-  shoeListItem: Item[];
-  capListItem: Item[];
-  watchListItem: Item[];
+  @Input() type: string;
+  @Input("titleName") titleName: string;
+  items: Item[];
+  subscription: Subscription;
 
-  constructor(private adminItemSv: ItemService) { 
-    // this.shirtListItem = this.adminItemSv.getListItem('shirt');
-    // this.trouserListItem = this.adminItemSv.getListItem('trouser');
-    // this.shoeListItem = this.adminItemSv.getListItem('shoe');
-    // this.capListItem = this.adminItemSv.getListItem('cap');
-    // this.watchListItem = this.adminItemSv.getListItem('watch');
+
+  constructor(private itemSv: ItemService) {
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.subscription = this.itemSv.getListItem(this.type).subscribe((data) => {
+    this.items = data;
+    });
   }
-  
-  onSubmit(submittedForm: any) {
-    // this.adminItemSv.addItem(submittedForm.value.name, submittedForm.value.type, submittedForm.value.srcUrl);
-    // this.shirtListItem = this.adminItemSv.getListItem('shirt');
-    // this.trouserListItem = this.adminItemSv.getListItem('trouser');
-    // this.shoeListItem = this.adminItemSv.getListItem('shoe');
-    // this.capListItem = this.adminItemSv.getListItem('cap');
-    // this.watchListItem = this.adminItemSv.getListItem('watch');
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
+
+
+
 }

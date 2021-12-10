@@ -8,13 +8,13 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./itemmanage.component.scss']
 })
 export class ItemmanageComponent implements OnInit {
-@Input() items: Item[];
+@Input() item: Item;
   constructor( private itemSv: ItemService) { }
 
   ngOnInit(): void {
   }
 
-  onDelete(itemDelete) {
+  onDelete(itemDelete: Item) {
     this.itemSv.deleteItem(itemDelete)
   }
 }

@@ -1,58 +1,9 @@
-<div class="mt-5"> 
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-        <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Tên sản phẩm" ngModel>
-        <input type="text" class="form-control mb-3" id="srcUrl" name="srcUrl" placeholder="Link sản phẩm" ngModel>
-        <div class="d-flex justify-content-center">
-            <select class="custom-select" id="type" name="type" ngModel>
-                <option selected>chọn loại sản phẩm</option>
-                <option *ngFor="let option of availableType" [value]="option.value">{{ option.type }}</option>
-            </select>
-            <button class="btn btn-primary ml-2" type="submit">Button</button>
-        </div>
-    </form>
-</div>
 <hr>
 <div class="list-group">
     <div class="d-flex justify-content-center">
-        <h5 class="mb-1">Danh sách sản phẩm</h5>
+        <h5 class="mb-1">{{ titleName }} mới nhất </h5>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-              <div class="list-group" >
-                <div class="list-group-item list-group-item-action mt-5 border">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="mb-1">Áo</h5>
-                    </div>
-                    <app-itemmanage [items]="shirtListItem"></app-itemmanage>
-                </div>
-                <div class="list-group-item list-group-item-action mt-5 border">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="mb-1">Quần</h5>
-                    </div>
-                  <app-itemmanage [items]="trouserListItem" titleName="Quần"></app-itemmanage>
-                </div>
-                <div class="list-group-item list-group-item-action mt-5 border">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="mb-1">Giày</h5>
-                    </div>
-                  <app-itemmanage [items]="shoeListItem" titleName="Giày"></app-itemmanage>
-                </div>
-                <div class="list-group-item list-group-item-action mt-5 border">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="mb-1">Mũ</h5>
-                    </div>
-                  <app-itemmanage [items]="capListItem" titleName="Mũ"></app-itemmanage>
-                </div>
-                <div class="list-group-item list-group-item-action mt-5 border">
-                    <div class="d-flex justify-content-center">
-                        <h5 class="mb-1">Đồng hồ</h5>
-                    </div>
-                  <app-itemmanage [items]="watchListItem" titleName="Đồng hồ"></app-itemmanage>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
+    <div class="d-flex">
+        <app-itemmanage *ngFor="let item of items" [item]="item"></app-itemmanage>
+    </div>
 </div>
-

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
 @Component({
@@ -8,12 +9,15 @@ import { Item } from 'src/model/items.model';
 })
 export class ItemsComponent implements OnInit {
   @Input() item: Item;
-
-  constructor() { 
+  amount = 0;
+  constructor(private itemSv: ItemService) { 
     
   }
 
   ngOnInit(): void {
   }
- 
+  
+  onPutIn(itemName: string, amountInput: number) {
+    this.itemSv.getChosenItems(itemName, amountInput)
+  }
 }
