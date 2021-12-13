@@ -17,7 +17,7 @@ export class ItemsComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  onPutIn(itemName: string, amountInput: number) {
-    this.itemSv.getChosenItems(itemName, amountInput)
+  onPutIn(item: Item, amountInput: number) {
+    this.itemSv.getChosenItems(item, amountInput)
   }
 }

@@ -24,6 +24,7 @@ export class ItemHandlingComponent implements OnInit {
       this.items = data;
     });
   }
+
   onDeleteItem(itemDelete: Item) {
     this.subscription = this.itemSv.deleteItem(itemDelete).subscribe(itemDelete =>
       this.items = itemDelete.filter(item => item.type === this.type)
@@ -32,7 +33,5 @@ export class ItemHandlingComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
 
 }

@@ -27,6 +27,6 @@ export class ShoeComponent implements OnInit {
   }
 
   onPutIn(itemName: string, amountInput: number) {
-    this.shoeSv.getChosenItems(itemName, amountInput)
+    // this.shoeSv.getChosenItems(itemName, amountInput)
   }
 }

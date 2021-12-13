@@ -27,6 +27,6 @@ export class TrouserComponent implements OnInit {
   }
 
   onPutIn(itemName: string, amountInput: number) {
-    this.trouserSV.getChosenItems(itemName, amountInput)
+  //   this.trouserSV.getChosenItems(itemName, amountInput)
   }
 }

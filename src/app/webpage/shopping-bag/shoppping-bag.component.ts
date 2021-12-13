@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
@@ -8,7 +8,7 @@ import { ShoppingITem } from 'src/model/shopping-item.model';
     templateUrl: './shopping-bag.component.html',
     styleUrls: ['./shopping-bag.component.html']
 })
-export class ShoppingBagComponent implements OnInit {
+export class ShoppingBagComponent implements OnInit, OnDestroy {
     shoppingItems: ShoppingITem[];
     subscription: Subscription;
     total: number;
@@ -19,7 +19,9 @@ export class ShoppingBagComponent implements OnInit {
 
     ngOnInit() {
         this.total = 0
-        this.shoppingItems = this.shoppingSV.shoppingListItem;
+        this.subscription = this.shoppingSV.shoppingItems.subscribe((data) => {
+            this.shoppingItems = data;
+        })  
         this.shoppingItems.forEach(item => this.total += item.price * item.amount)
     }
 
@@ -35,6 +37,9 @@ export class ShoppingBagComponent implements OnInit {
         }
     }
 
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+      }
     // deleteChosenItem(item: ShoppingITem) {
     //     this.shoppingItems.shoppingSV.deleteChosenItem(item)
     // }

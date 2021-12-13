@@ -27,6 +27,6 @@ export class ShirtComponent implements OnInit {
   }
 
   onPutIn(itemName: string, amountInput: number) {
-    this.shirtSv.getChosenItems(itemName, amountInput)
+    // this.shirtSv.getChosenItems(itemName, amountInput)
   }
 }

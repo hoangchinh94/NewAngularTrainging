@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TypeItem } from 'src/model/types.model';
+import { GuidHelper } from '../guild.helper';
 import { ItemService } from '../service/item.service';
 
 
@@ -24,8 +25,11 @@ export class AdminpageComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.adminSv.getTitleName()
   }
+
   onSubmit(submittedForm: any) {
-    const id = this.currDate.toLocaleString()
+    const id = GuidHelper.newGuid();
     this.adminSv.addItem(id, submittedForm.value.name, submittedForm.value.type,submittedForm.value.price, submittedForm.value.srcUrl)
   }
+
+  
 }

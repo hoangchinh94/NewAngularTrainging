@@ -27,6 +27,6 @@ export class CapComponent implements OnInit {
   }
 
   onPutIn(itemName: string, amountInput: number) {
-    this.capSv.getChosenItems(itemName, amountInput)
+    // this.capSv.getChosenItems(itemName, amountInput)
   }
 }

@@ -3,6 +3,7 @@ import { BehaviorSubject, filter, map, Subject, tap } from "rxjs";
 import { Item } from "src/model/items.model";
 import { ShoppingITem } from "src/model/shopping-item.model";
 import { TypeItem } from "src/model/types.model";
+import { GuidHelper } from "../guild.helper";
 export class ItemService {
   _listItems: Item[] = [
     new Item('1', 'T-shirt', 'shirt', 200000, 'assets/images/T-shirt.png'),
@@ -18,7 +19,7 @@ export class ItemService {
   ];
   shoppingListItem: ShoppingITem[] = [];
   listItems = new BehaviorSubject(this._listItems);
-  // shoppingItems = new BehaviorSubject(this.shoppingListItem);
+  shoppingItems = new BehaviorSubject(this.shoppingListItem);
   typeItems: TypeItem[] = [
     new TypeItem('shirt', 'Áo'),
     new TypeItem('trouser', 'Quần'),
@@ -39,29 +40,29 @@ export class ItemService {
 
 
   addItem(id: string, name: string, type: string, price: number, srcUrl: string) {
-    const newItem = {id: id, name: name, type: type, price: price, srcUrl: srcUrl };
+    const newItem = { id: id, name: name, type: type, price: price, srcUrl: srcUrl };
     this.listItems.next(this.listItems.getValue().concat([newItem]))
-    console.log(this.listItems)
   }
 
   deleteItem(itemDelete: Item) {
     return this.listItems.pipe(
       map(data => {
-        data.forEach((d, i) => {
-          if (d.id == itemDelete.id) {
-            data.splice(i, 1);
-          }
-        });
-        return data;
+        const a = data.findIndex(i => i.id === itemDelete.id)
+        return data.splice(a, 1)
       })
-    );
+    )
+
   }
 
-  getChosenItems(itemNameChosen: String, amount: number) {
-    const item = this._listItems.find(item => item.name == itemNameChosen);
-    const shoppingItem = new ShoppingITem(item.name, item.type, item.price, amount)
-    this.shoppingListItem.push(shoppingItem);
+  getChosenItems(itemWasChosen: Item, amount: number) {
+    const currValue = this.shoppingItems.value;
+    const newValue = new ShoppingITem(itemWasChosen.name, itemWasChosen.type, itemWasChosen.price, amount);
+    const updateValue = [...currValue, newValue];
+    this.shoppingItems.next(updateValue);
   }
+  
+
+
 
   // deleteChosenItem(delteItem: ShoppingITem) {
   //   this.shoppingListItem.filter(item => item.name === delteItem.name)
