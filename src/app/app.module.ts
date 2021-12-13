@@ -23,6 +23,7 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { ItemHandlingComponent } from './adminpage/item-handling/item-handling.component';
 import { ItemmanageComponent } from './adminpage/item-handling/itemmanage/itemmanage.component';
 import { ShoppingBagComponent } from './webpage/shopping-bag/shoppping-bag.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -56,7 +57,7 @@ import { ShoppingBagComponent } from './webpage/shopping-bag/shoppping-bag.compo
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ItemService],
+  providers: [ItemService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

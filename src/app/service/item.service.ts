@@ -5,18 +5,16 @@ import { ShoppingITem } from "src/model/shopping-item.model";
 import { TypeItem } from "src/model/types.model";
 export class ItemService {
   _listItems: Item[] = [
-    new Item('T-shirt', 'shirt', 200000, 'assets/images/T-shirt.png'),
-    new Item('T-shirt', 'shirt', 300000, 'assets/images/T-shirt.png'),
-    new Item('T-shirt', 'shirt', 400000, 'assets/images/T-shirt.png'),
-    new Item('Sơ mi', 'shirt', 150000, 'assets/images/somi.png'),
-    new Item('Jean', 'trouser', 250000, 'assets/images/jean.jpg'),
-    new Item('Quần tây', 'trouser', 180000, 'assets/images/quantay.png'),
-    new Item('Bitis', 'shoe', 300000, 'assets/images/bitis.png'),
-    new Item('Bata', 'shoe', 250000, 'assets/images/bata.png'),
-    new Item('Mũ jean', 'cap', 150000, 'assets/images/jeancap.png'),
-    new Item('Mũ hoa', 'cap', 160000, 'assets/images/flowercap.png'),
-    new Item('Rolex', 'watch', 1500000, 'assets/images/rolex.png'),
-    new Item('Apple', 'watch', 1000000, 'assets/images/apple.png'),
+    new Item('1', 'T-shirt', 'shirt', 200000, 'assets/images/T-shirt.png'),
+    new Item('2', 'Sơ mi', 'shirt', 150000, 'assets/images/somi.png'),
+    new Item('3', 'Jean', 'trouser', 250000, 'assets/images/jean.jpg'),
+    new Item('4', 'Quần tây', 'trouser', 180000, 'assets/images/quantay.png'),
+    new Item('5', 'Bitis', 'shoe', 300000, 'assets/images/bitis.png'),
+    new Item('6', 'Bata', 'shoe', 250000, 'assets/images/bata.png'),
+    new Item('7', 'Mũ jean', 'cap', 150000, 'assets/images/jeancap.png'),
+    new Item('8', 'Mũ hoa', 'cap', 160000, 'assets/images/flowercap.png'),
+    new Item('9', 'Rolex', 'watch', 1500000, 'assets/images/rolex.png'),
+    new Item('10', 'Apple', 'watch', 1000000, 'assets/images/apple.png'),
   ];
   shoppingListItem: ShoppingITem[] = [];
   listItems = new BehaviorSubject(this._listItems);
@@ -40,17 +38,17 @@ export class ItemService {
   }
 
 
-  addItem(name: string, type: string, price: number, srcUrl: string) {
-    const newItem = { name: name, type: type, price: price, srcUrl: srcUrl };
+  addItem(id: string, name: string, type: string, price: number, srcUrl: string) {
+    const newItem = {id: id, name: name, type: type, price: price, srcUrl: srcUrl };
     this.listItems.next(this.listItems.getValue().concat([newItem]))
+    console.log(this.listItems)
   }
 
   deleteItem(itemDelete: Item) {
-    // const a
     return this.listItems.pipe(
       map(data => {
         data.forEach((d, i) => {
-          if (d.name == itemDelete.name) {
+          if (d.id == itemDelete.id) {
             data.splice(i, 1);
           }
         });
