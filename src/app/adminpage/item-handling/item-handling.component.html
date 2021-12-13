@@ -4,6 +4,6 @@
         <h5 class="mb-1">{{ titleName }} mới nhất </h5>
     </div>
     <div class="d-flex">
-        <app-itemmanage *ngFor="let item of items" [item]="item"></app-itemmanage>
+        <app-itemmanage *ngFor="let item of items" [item]="item" (deleteItem)="onDeleteItem($event)"></app-itemmanage>
     </div>
 </div>

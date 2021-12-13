@@ -34,4 +34,8 @@ export class ShoppingBagComponent implements OnInit {
             this.total =0
         }
     }
+
+    // deleteChosenItem(item: ShoppingITem) {
+    //     this.shoppingItems.shoppingSV.deleteChosenItem(item)
+    // }
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/model/items.model';
 
@@ -9,12 +10,15 @@ import { Item } from 'src/model/items.model';
 })
 export class ItemmanageComponent implements OnInit {
 @Input() item: Item;
+@Output() deleteItem = new EventEmitter<Item>()
+subcription: Subscription;
   constructor( private itemSv: ItemService) { }
 
   ngOnInit(): void {
   }
 
   onDelete(itemDelete: Item) {
-    this.itemSv.deleteItem(itemDelete)
-  }
+    alert('Bạn thực sự muốn xóa sản phẩm này?')
+    this.deleteItem.emit(itemDelete)
+    }
 }

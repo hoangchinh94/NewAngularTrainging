@@ -25,6 +25,6 @@ export class AdminpageComponent implements OnInit {
     this.categories = this.adminSv.getTitleName()
   }
   onSubmit(submittedForm: any) {
-    this.adminSv.addItem(submittedForm.value.name, submittedForm.value.type,submittedForm.value.price, submittedForm.value.srcUrl);
+    this.adminSv.addItem(submittedForm.value.name, submittedForm.value.type,submittedForm.value.price, submittedForm.value.srcUrl)
   }
 }
