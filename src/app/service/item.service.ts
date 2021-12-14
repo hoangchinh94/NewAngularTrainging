@@ -20,6 +20,8 @@ export class ItemService {
   shoppingListItem: ShoppingITem[] = [];
   listItems = new BehaviorSubject(this._listItems);
   shoppingItems = new BehaviorSubject(this.shoppingListItem);
+  amountWasChosen = new Subject<number>();
+  priceMustPaid = new Subject<number>();
   typeItems: TypeItem[] = [
     new TypeItem('shirt', 'Áo'),
     new TypeItem('trouser', 'Quần'),
@@ -58,7 +60,15 @@ export class ItemService {
     const currValue = this.shoppingItems.value;
     const newValue = new ShoppingITem(itemWasChosen.name, itemWasChosen.type, itemWasChosen.price, amount);
     const updateValue = [...currValue, newValue];
+    var sumAmount = 0;
+    var sumPrice = 0;
+    updateValue.forEach((data) => {
+      sumAmount += data.amount;
+      sumPrice += data.price;
+    })
     this.shoppingItems.next(updateValue);
+    this.amountWasChosen.next(sumAmount);
+    this.priceMustPaid.next(sumPrice);
   }
   
 

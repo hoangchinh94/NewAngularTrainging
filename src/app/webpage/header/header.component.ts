@@ -10,14 +10,19 @@ import { Item } from 'src/model/items.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  // @Output() onChosenType = new EventEmitter<string>()
-
-  // chosenList: Item[];
   subscription: Subscription;
+  numberChosen;
+  priceMustPaid;
 
   constructor(private itemService: ItemService) {
   }
 
   ngOnInit(): void {
+    this.subscription = this.itemService.amountWasChosen.subscribe(number =>
+      this.numberChosen = number
+    )
+    this.subscription = this.itemService.priceMustPaid.subscribe(number =>
+      this.priceMustPaid = number
+    )
   }
 }

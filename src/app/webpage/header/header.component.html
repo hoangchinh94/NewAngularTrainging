@@ -27,7 +27,6 @@
                     <input class="form-control ml-5" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>
-                  <button class="btn btn-success ml-3" routerLink="/shopping-bag">Xem giỏ hàng</button>
                   <button class="btn btn-primary ml-5" routerLink="/login">Đăng nhập</button>
                   <button class="btn btn-success ml-3" routerLink="/register">Đăng kí</button>
                 </div>
@@ -37,4 +36,12 @@
         </div>
     </div>
   </div>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-success ml-3" routerLink="/shopping-bag">
+      Giỏ hàng <span class="badge badge-danger">{{ numberChosen }}</span>
+    </button>
+    <div class="d-flex flex-column bd-highlight ml-3">
+      <div class="p-2 bg-info mr-5">Tổng tiền:{{ priceMustPaid }}</div>
+    </div>
+   </div>
   

@@ -1,7 +1,6 @@
 export class GuidHelper {
 
     static newGuid() {
-
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
 
             // tslint:disable-next-line:no-bitwise
