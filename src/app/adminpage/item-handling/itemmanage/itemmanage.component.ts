@@ -18,7 +18,9 @@ subcription: Subscription;
   }
 
   onDelete(itemDelete: Item) {
-    alert('Bạn thực sự muốn xóa sản phẩm này?')
-    this.deleteItem.emit(itemDelete)
+    if (!confirm('Bạn thực sự muốn xóa sản phẩm này?')){
+      return
     }
+    this.deleteItem.emit(itemDelete);
+  }
 }

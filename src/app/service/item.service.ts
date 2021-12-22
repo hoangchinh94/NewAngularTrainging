@@ -1,9 +1,6 @@
-import { EventEmitter } from "@angular/core";
-import { BehaviorSubject, filter, map, Subject, tap } from "rxjs";
+import { BehaviorSubject, map } from "rxjs";
 import { Item } from "src/model/items.model";
-import { ShoppingITem } from "src/model/shopping-item.model";
 import { TypeItem } from "src/model/types.model";
-import { GuidHelper } from "../guild.helper";
 export class ItemService {
   _listItems: Item[] = [
     new Item('1', 'T-shirt', 'shirt', 200000, 'assets/images/T-shirt.png'),
@@ -17,11 +14,7 @@ export class ItemService {
     new Item('9', 'Rolex', 'watch', 1500000, 'assets/images/rolex.png'),
     new Item('10', 'Apple', 'watch', 1000000, 'assets/images/apple.png'),
   ];
-  shoppingListItem: ShoppingITem[] = [];
-  listItems = new BehaviorSubject(this._listItems);
-  shoppingItems = new BehaviorSubject(this.shoppingListItem);
-  amountWasChosen = new Subject<number>();
-  priceMustPaid = new Subject<number>();
+  listItems = new BehaviorSubject<Item[]>(this._listItems);
   typeItems: TypeItem[] = [
     new TypeItem('shirt', 'Áo'),
     new TypeItem('trouser', 'Quần'),
@@ -47,34 +40,9 @@ export class ItemService {
   }
 
   deleteItem(itemDelete: Item) {
-    return this.listItems.pipe(
-      map(data => {
-        const a = data.findIndex(i => i.id === itemDelete.id)
-        return data.splice(a, 1)
-      })
-    )
-
+    const currList = this.listItems.value;
+    const updateList = currList.filter(item => item.id !== itemDelete.id);
+    this.listItems.next(updateList);
   }
 
-  getChosenItems(itemWasChosen: Item, amount: number) {
-    const currValue = this.shoppingItems.value;
-    const newValue = new ShoppingITem(itemWasChosen.name, itemWasChosen.type, itemWasChosen.price, amount);
-    const updateValue = [...currValue, newValue];
-    var sumAmount = 0;
-    var sumPrice = 0;
-    updateValue.forEach((data) => {
-      sumAmount += data.amount;
-      sumPrice += data.price;
-    })
-    this.shoppingItems.next(updateValue);
-    this.amountWasChosen.next(sumAmount);
-    this.priceMustPaid.next(sumPrice);
-  }
-  
-
-
-
-  // deleteChosenItem(delteItem: ShoppingITem) {
-  //   this.shoppingListItem.filter(item => item.name === delteItem.name)
-  // }
 }

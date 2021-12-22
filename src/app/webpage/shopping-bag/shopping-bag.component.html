@@ -1,30 +1,42 @@
-<button class="btn btn-primary mr-2" type="submit" routerLink="/">Trở lại trang chủ</button>
+<div class="d-flex justify-content-between">
+  <button class="btn btn-primary mr-2" type="submit" routerLink="/">Trở lại trang chủ</button>
+  <div class="d-flex">
+    <img src="https://taoanhonline.com/wp-content/uploads/2020/02/anh-doremon-0.jpg?v=1582383592" alt="Doraemon">
+    <h5>{{userName}}</h5>
+    <button class="btn btn-secondary h-38 ml-5" (click)="logout()">Log out</button>
+  </div>
+</div>
 <hr>
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Sản phẩm</th>
-        <th scope="col">Đơn giá</th>
-        <th scope="col">Số lượng</th>
-        <th scope="col">Số tiền</th>
-        <th scope="col">Thao tác</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of shoppingItems">
-        <td>{{ item.name }}</td>
-        <td>{{ item.price }}</td>
-        <td>{{ item.amount}}</td>
-        <td>{{item.price*item.amount}}</td>
-        <!-- <td><button class="btn btn-warning" (click)="deleteChosenItem(item)">Xóa sản phẩm</button></td> -->
-      </tr>
-    </tbody>
-  </table>
-  <hr>
-  <form>
-    <div class="d-flex justify-content-center">
-        <span class="mr-5">Tổng tiền thanh toán:</span>
-        <p>{{ total }} đ</p>
-        <button class="btn btn-primary ml-2" type="button" (click)="onPaid()">Thanh toán</button>
-    </div>
+  <thead>
+    <tr>
+      <th scope="col">Sản phẩm</th>
+      <th scope="col">Đơn giá</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Số tiền</th>
+      <th scope="col">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of shoppingItems">
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td><input type="number" id="{{item.id}}" class="amountCtrl" min="0"
+          [(ngModel)]="item.amount"
+          (input)="onChangeAmount(item.id, item.amount)">
+      </td>
+      <td>{{item.price*item.amount}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="deleteChosenItem(item)">Xóa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<form>
+  <div class="d-flex justify-content-center">
+    <span class="mr-5">Tổng tiền thanh toán:</span>
+    <p>{{ total }} đ</p>
+    <button class="btn btn-primary ml-2" type="button" (click)="onPaid()">Thanh toán</button>
+  </div>
 </form>

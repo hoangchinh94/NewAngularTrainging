@@ -23,7 +23,15 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { ItemHandlingComponent } from './adminpage/item-handling/item-handling.component';
 import { ItemmanageComponent } from './adminpage/item-handling/itemmanage/itemmanage.component';
 import { ShoppingBagComponent } from './webpage/shopping-bag/shoppping-bag.component';
-import { DatePipe } from '@angular/common';
+import { LoginManagementService } from './service/login-management.service';
+import { forbiddenNameValidator } from './shared/forbiden.directive';
+import { ShoppingBagService } from './service/shopping-bag.service';
+import { CapItemComponent } from './webpage/header/categories/cap/cap-item/cap-item.component';
+import { ShirtItemComponent } from './webpage/header/categories/shirt/shirt-item/shirt-item.component';
+import { ShoeItemComponent } from './webpage/header/categories/shoe/shoe-item/shoe-item.component';
+import { AdminLoginComponent } from './adminpage/admin-login/admin-login.component';
+import { UserHandlingComponent } from './adminpage/user-handling/user-handling.component';
+import { UserManagementService } from './service/user-management.service';
 
 
 
@@ -40,12 +48,17 @@ import { DatePipe } from '@angular/common';
     ItemsComponent,
     RegisterPageComponent,
     CapComponent,
+    CapItemComponent,
     ShirtComponent,
+    ShirtItemComponent,
     ShoeComponent,
+    ShoeItemComponent,
     TrouserComponent,
     WatchComponent,
     LoginpageComponent,
     AdminpageComponent,
+    AdminLoginComponent,
+    UserHandlingComponent,
     ItemHandlingComponent,
     ItemmanageComponent,
     ShoppingBagComponent
@@ -57,7 +70,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ItemService, DatePipe],
+  providers: [ItemService, ShoppingBagService, LoginManagementService, UserManagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

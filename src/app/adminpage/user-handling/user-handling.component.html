@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên người dùng</th>
+        <th scope="col">Email</th>
+        <th scope="col">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let userBag of userBags">
+      <tr>
+        <th scope="row"></th>
+        <td><a routerLink="/userDetail">{{ userBag.userAccount }}</a></td>
+        <td>{{ userBag.userGmail }}</td>
+        <td>
+            <p>Vô hiệu hóa</p>
+            <p>Mở khóa</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>

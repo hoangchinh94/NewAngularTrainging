@@ -1,4 +1,4 @@
-export class ShoppingITem {
+export class UserBag {
     public userAccount: string;
     public userGmail: string;
     public id: string; 
@@ -8,12 +8,12 @@ export class ShoppingITem {
     public amount: number;
   
     constructor(userAccount: string, userGmail: string, id: string, name: string, type: string, price: number, amount: number) {
-      this.userAccount = userAccount;
-      this.userGmail = userGmail;
-      this.id = id;
-      this.name = name;
-      this.type = type;
-      this.price = price;
-      this.amount = amount;
-    }
+        this.userAccount = userAccount;
+        this.userGmail = userGmail;
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.amount = amount;
+      }
   }

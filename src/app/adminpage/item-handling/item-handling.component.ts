@@ -26,9 +26,8 @@ export class ItemHandlingComponent implements OnInit {
   }
 
   onDeleteItem(itemDelete: Item) {
-    this.subscription = this.itemSv.deleteItem(itemDelete).subscribe(itemDelete =>
-      this.items = itemDelete.filter(item => item.type === this.type)
-    )}
+    this.itemSv.deleteItem(itemDelete)
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

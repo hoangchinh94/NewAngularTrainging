@@ -3,7 +3,12 @@
       <div class="d-flex justify-content-center">
         <h2>Đăng kí</h2>
       </div>
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="form-group">
+          <label for="userName">Tên hiển thị</label>
+          <input type="text" class="form-control" id="userName" formControlName="userName" placeholder="Nhập tên bạn muốn hiển thị">
+          <p id="userNameHelp"class="invalid" *ngIf="email.invalid && email.touched"> Hãy nhập tên bạn muốn hiển thị</p>
+        </div>
         <div class="form-group">
           <label for="email">Email của bạn</label>
           <input type="text" class="form-control" id="email" formControlName="email" placeholder="Nhập email của bạn">
@@ -17,9 +22,10 @@
         </div>
         <div class="form-group">
             <label for="confirmPassword">Nhập lại mật khẩu</label>
-            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" placeholder="Hãy nhập lại mật khẩu">
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" placeholder="Nhập lại mật khẩu">
             <p class="invalid" *ngIf="confirmPassword.errors?.['matching']">Mật khẩu phải trùng với mật khẩu đã nhập</p>
           </div>
+          <hr>
         <div class="d-flex w-100 justify-content-center">
             <button type="submit"class="btn btn-primary w-100">Submit</button>
         </div>

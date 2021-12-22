@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header [userName]="userName" [userGmail]="userGmail"></app-header>
 <div class="container">
   <div class="row">
       <div class="col">
         <div class="list-group" >
           <div class="list-group-item list-group-item-action mt-5 border">
-            <app-list-item *ngFor="let category of categories" [type]="category.type" [titleName]="category.titleName"></app-list-item>
+            <app-list-item *ngFor="let category of categories" [type]="category.type" [titleName]="category.titleName" (putIn)="onPutIn($event)"></app-list-item>
           </div>
         </div>
       </div>
